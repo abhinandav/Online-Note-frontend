@@ -7,6 +7,7 @@ import { formatDistanceToNow } from 'date-fns';
 import { jwtDecode } from 'jwt-decode'
 import { TWarning } from '../toastify/Toastify'
 import Cards from './Cards';
+import { Link } from 'react-router-dom';
 
 
 function AllNotes() {
@@ -19,7 +20,6 @@ function AllNotes() {
     
 
   
-
     const fetch_list=()=>{
         if(Access){
             AuthUserAxios.get(`/note/list/${jwtDecode(Access).user_id}`, {
@@ -40,9 +40,19 @@ function AllNotes() {
 
 
   return (
-        <div className='flex flex-col w-2/3 ml-40 mb-20'>
-                            <div className='mr-20 mt-10 '>
-                                
+    <div style={{minHeight:1000}} className='bg-gray-300 '>
+
+        
+
+        <div className='flex flex-col w-2/3 ml-60 mb-20'>
+                    <Link className='mt-10' to='/'>
+                        <span className='cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-6'>
+                            Go Back
+                        </span>
+                    </Link>
+            
+
+                    <div className='mr-20'>           
                         {notesList.map((res) => (
                             <div key={res.id}>
                             <Cards id={res.id} setEditId={setEditId}  setNotesList={setNotesList} data={res} />
@@ -51,6 +61,7 @@ function AllNotes() {
                     }
                 </div>
         </div>
+    </div>
   )
 }
 
