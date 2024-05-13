@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 
-const API_BASE_URL= 'http://16.171.136.105'
+const API_BASE_URL= 'http://backend.skillbridge.store'
 
 export const UserAxios = axios.create({
     baseURL: `${API_BASE_URL}`,

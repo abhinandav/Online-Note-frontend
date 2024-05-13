@@ -11,14 +11,7 @@ function Register() {
 
     const handleSubmit = async (res) => {
         res.preventDefault()
-        // console.log('this is shere');
-        // console.log(res.target.password.value);
-        // if (res.target.password.value.trim() == '')
-        // {
-        //     TWarning('Enter a valid password')
-        //     return
-        // }
-        // else{
+
         const formData = new FormData(res.target)
         await UserAxios.post('/register', formData).then((res) => {
             navigate('/login')
